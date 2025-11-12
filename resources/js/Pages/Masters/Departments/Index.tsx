@@ -102,7 +102,6 @@ export default function DepartmentsIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-(DepartmentsIndex as any).layout = (page: React.ReactNode) => (
+;(DepartmentsIndex as any).layout = (page: React.ReactNode) => (
   <Layout title="部門マスタ">{page}</Layout>
 )
-

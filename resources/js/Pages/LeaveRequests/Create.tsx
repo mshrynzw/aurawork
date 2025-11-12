@@ -76,9 +76,7 @@ export default function LeaveRequestCreate() {
                   ))}
                 </SelectContent>
               </Select>
-              {errors.type && (
-                <p className="text-sm text-destructive">{errors.type}</p>
-              )}
+              {errors.type && <p className="text-sm text-destructive">{errors.type}</p>}
             </div>
 
             <div className="grid gap-4 md:grid-cols-2">
@@ -113,9 +111,7 @@ export default function LeaveRequestCreate() {
                     required
                   />
                 </div>
-                {errors.end_date && (
-                  <p className="text-sm text-destructive">{errors.end_date}</p>
-                )}
+                {errors.end_date && <p className="text-sm text-destructive">{errors.end_date}</p>}
               </div>
             </div>
 
@@ -134,9 +130,7 @@ export default function LeaveRequestCreate() {
               <p className="text-xs text-muted-foreground">
                 0.5単位で入力可能（例: 1.0, 1.5, 2.0）
               </p>
-              {errors.days && (
-                <p className="text-sm text-destructive">{errors.days}</p>
-              )}
+              {errors.days && <p className="text-sm text-destructive">{errors.days}</p>}
             </div>
 
             <div className="space-y-2">
@@ -148,9 +142,7 @@ export default function LeaveRequestCreate() {
                 onChange={e => setData('reason', e.target.value)}
                 rows={4}
               />
-              {errors.reason && (
-                <p className="text-sm text-destructive">{errors.reason}</p>
-              )}
+              {errors.reason && <p className="text-sm text-destructive">{errors.reason}</p>}
             </div>
 
             {Object.keys(errors).length > 0 && (
@@ -175,7 +167,6 @@ export default function LeaveRequestCreate() {
 }
 
 // Inertiaの"per-page layout"パターン
-(LeaveRequestCreate as any).layout = (page: React.ReactNode) => (
+;(LeaveRequestCreate as any).layout = (page: React.ReactNode) => (
   <Layout title="休暇申請">{page}</Layout>
 )
-

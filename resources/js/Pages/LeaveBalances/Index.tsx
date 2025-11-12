@@ -117,7 +117,6 @@ export default function LeaveBalancesIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-(LeaveBalancesIndex as any).layout = (page: React.ReactNode) => (
+;(LeaveBalancesIndex as any).layout = (page: React.ReactNode) => (
   <Layout title="休暇残高">{page}</Layout>
 )
-

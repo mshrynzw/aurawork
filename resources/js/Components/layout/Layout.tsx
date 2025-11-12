@@ -25,9 +25,7 @@ export default function Layout({ title = 'aurrawork', children }: Props) {
         <Header title={title} />
 
         {/* ===== コンテンツ ===== */}
-        <div className="w-full max-w-full px-4 py-8 pt-22">
-          {children}
-        </div>
+        <div className="w-full max-w-full px-4 py-8 pt-22">{children}</div>
 
         {/* ===== フッター（任意） ===== */}
         <Footer />

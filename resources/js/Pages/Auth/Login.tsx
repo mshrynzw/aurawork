@@ -23,7 +23,12 @@ export default function Login() {
       <AuroraBackground />
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle className="text-4xl font-semibold tracking-wider animate-dimlight box-reflect self-center" data-text="aurawork">aurawork</CardTitle>
+          <CardTitle
+            className="text-4xl font-semibold tracking-wider animate-dimlight box-reflect self-center"
+            data-text="aurawork"
+          >
+            aurawork
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={submit} className="space-y-4">
@@ -38,9 +43,7 @@ export default function Login() {
                 autoComplete="email"
                 required
               />
-              {errors.email && (
-                <p className="text-sm text-destructive">{errors.email}</p>
-              )}
+              {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
             </div>
             <div className="space-y-2">
               <Label htmlFor="password">パスワード</Label>
@@ -53,9 +56,7 @@ export default function Login() {
                 autoComplete="current-password"
                 required
               />
-              {errors.password && (
-                <p className="text-sm text-destructive">{errors.password}</p>
-              )}
+              {errors.password && <p className="text-sm text-destructive">{errors.password}</p>}
             </div>
             {errors.message && (
               <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
@@ -71,4 +72,3 @@ export default function Login() {
     </div>
   )
 }
-

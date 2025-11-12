@@ -98,7 +98,6 @@ export default function CompaniesIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-(CompaniesIndex as any).layout = (page: React.ReactNode) => (
+;(CompaniesIndex as any).layout = (page: React.ReactNode) => (
   <Layout title="会社マスタ">{page}</Layout>
 )
-

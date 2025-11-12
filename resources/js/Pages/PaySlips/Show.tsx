@@ -42,13 +42,69 @@ const paySlip = {
 
 //TODO: 値は仮のまま
 const payLines: PayLine[] = [
-  { id: 1, pay_item_name: '基本給', pay_item_kind: 'earning', quantity: null, rate: null, amount: 250000, memo: null },
-  { id: 2, pay_item_name: '残業手当', pay_item_kind: 'earning', quantity: 25, rate: 2000, amount: 50000, memo: null },
-  { id: 3, pay_item_name: '交通費', pay_item_kind: 'earning', quantity: null, rate: null, amount: 15000, memo: null },
-  { id: 4, pay_item_name: '健康保険', pay_item_kind: 'deduction', quantity: null, rate: null, amount: 15000, memo: null },
-  { id: 5, pay_item_name: '厚生年金', pay_item_kind: 'deduction', quantity: null, rate: null, amount: 20000, memo: null },
-  { id: 6, pay_item_name: '雇用保険', pay_item_kind: 'deduction', quantity: null, rate: null, amount: 5000, memo: null },
-  { id: 7, pay_item_name: '所得税', pay_item_kind: 'deduction', quantity: null, rate: null, amount: 10000, memo: null },
+  {
+    id: 1,
+    pay_item_name: '基本給',
+    pay_item_kind: 'earning',
+    quantity: null,
+    rate: null,
+    amount: 250000,
+    memo: null,
+  },
+  {
+    id: 2,
+    pay_item_name: '残業手当',
+    pay_item_kind: 'earning',
+    quantity: 25,
+    rate: 2000,
+    amount: 50000,
+    memo: null,
+  },
+  {
+    id: 3,
+    pay_item_name: '交通費',
+    pay_item_kind: 'earning',
+    quantity: null,
+    rate: null,
+    amount: 15000,
+    memo: null,
+  },
+  {
+    id: 4,
+    pay_item_name: '健康保険',
+    pay_item_kind: 'deduction',
+    quantity: null,
+    rate: null,
+    amount: 15000,
+    memo: null,
+  },
+  {
+    id: 5,
+    pay_item_name: '厚生年金',
+    pay_item_kind: 'deduction',
+    quantity: null,
+    rate: null,
+    amount: 20000,
+    memo: null,
+  },
+  {
+    id: 6,
+    pay_item_name: '雇用保険',
+    pay_item_kind: 'deduction',
+    quantity: null,
+    rate: null,
+    amount: 5000,
+    memo: null,
+  },
+  {
+    id: 7,
+    pay_item_name: '所得税',
+    pay_item_kind: 'deduction',
+    quantity: null,
+    rate: null,
+    amount: 10000,
+    memo: null,
+  },
 ]
 
 const formatCurrency = (amount: number) => {
@@ -122,12 +178,8 @@ export default function PaySlipShow() {
                   <TableRow key={line.id}>
                     <TableCell>{line.pay_item_name}</TableCell>
                     <TableCell>{line.quantity ?? '-'}</TableCell>
-                    <TableCell>
-                      {line.rate ? formatCurrency(line.rate) : '-'}
-                    </TableCell>
-                    <TableCell className="text-right">
-                      {formatCurrency(line.amount)}
-                    </TableCell>
+                    <TableCell>{line.rate ? formatCurrency(line.rate) : '-'}</TableCell>
+                    <TableCell className="text-right">{formatCurrency(line.amount)}</TableCell>
                   </TableRow>
                 ))}
                 <TableRow className="font-semibold">
@@ -157,12 +209,8 @@ export default function PaySlipShow() {
                   <TableRow key={line.id}>
                     <TableCell>{line.pay_item_name}</TableCell>
                     <TableCell>{line.quantity ?? '-'}</TableCell>
-                    <TableCell>
-                      {line.rate ? formatCurrency(line.rate) : '-'}
-                    </TableCell>
-                    <TableCell className="text-right">
-                      {formatCurrency(line.amount)}
-                    </TableCell>
+                    <TableCell>{line.rate ? formatCurrency(line.rate) : '-'}</TableCell>
+                    <TableCell className="text-right">{formatCurrency(line.amount)}</TableCell>
                   </TableRow>
                 ))}
                 <TableRow className="font-semibold">
@@ -179,9 +227,7 @@ export default function PaySlipShow() {
           <div className="rounded-lg border bg-muted p-4">
             <div className="flex items-center justify-between">
               <span className="text-lg font-semibold">差引支給額</span>
-              <span className="text-2xl font-bold">
-                {formatCurrency(paySlip.net_amount)}
-              </span>
+              <span className="text-2xl font-bold">{formatCurrency(paySlip.net_amount)}</span>
             </div>
           </div>
         </CardContent>
@@ -191,7 +237,4 @@ export default function PaySlipShow() {
 }
 
 // Inertiaの"per-page layout"パターン
-(PaySlipShow as any).layout = (page: React.ReactNode) => (
-  <Layout title="給与明細">{page}</Layout>
-)
-
+;(PaySlipShow as any).layout = (page: React.ReactNode) => <Layout title="給与明細">{page}</Layout>

@@ -149,10 +149,7 @@ function ApprovalActionDialog({ approval }: { approval: Approval }) {
             <XCircle className="mr-2 h-4 w-4" />
             却下
           </Button>
-          <Button
-            onClick={() => handleSubmit('approve')}
-            disabled={processing}
-          >
+          <Button onClick={() => handleSubmit('approve')} disabled={processing}>
             <CheckCircle className="mr-2 h-4 w-4" />
             承認
           </Button>
@@ -216,7 +213,6 @@ export default function ApprovalsIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-(ApprovalsIndex as any).layout = (page: React.ReactNode) => (
+;(ApprovalsIndex as any).layout = (page: React.ReactNode) => (
   <Layout title="承認一覧">{page}</Layout>
 )
-

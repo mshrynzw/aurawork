@@ -1,0 +1,59 @@
+{
+  // エディタ基本設定
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": false,
+  "editor.formatOnSaveMode": "file",
+  
+  // デフォルトフォーマッター
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  
+  // 保存時の自動修正
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  
+  // TypeScript/JavaScript設定
+  "typescript.preferences.quoteStyle": "single",
+  "javascript.preferences.quoteStyle": "single",
+  
+  // Prettier設定（.prettierrcファイルを使用）
+  "prettier.requireConfig": true,
+  "prettier.configPath": ".prettierrc",
+  
+  // ESLint設定
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  
+  // Laravel Pint設定（PHPファイル用）
+  "[php]": {
+    "editor.defaultFormatter": "henningveenstra.laravel-pint",
+    "editor.formatOnSave": true
+  },
+  
+  // ファイルタイプ別のフォーマッター設定
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

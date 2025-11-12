@@ -32,10 +32,10 @@ export default function Header({ title = 'aurawork' }: HeaderProps) {
       const hours = date.getHours().toString().padStart(2, '0')
       const minutes = date.getMinutes().toString().padStart(2, '0')
       const seconds = date.getSeconds().toString().padStart(2, '0')
-      
+
       const weekdays = ['日', '月', '火', '水', '木', '金', '土']
       const weekday = weekdays[date.getDay()]
-      
+
       return `${year}年${month}月${day}日（${weekday}）${hours}:${minutes}:${seconds}`
     }
   }
@@ -45,9 +45,7 @@ export default function Header({ title = 'aurawork' }: HeaderProps) {
       <div className="flex h-14 w-full items-center justify-between px-4">
         <div className="flex items-center gap-3 md:hidden">
           <SidebarTrigger />
-          <h1 className="text-sm font-semibold tracking-wide text-white/90">
-            {title}
-          </h1>
+          <h1 className="text-sm font-semibold tracking-wide text-white/90">{title}</h1>
         </div>
         <div className="flex items-center">
           <span className="text-sm font-mono text-white/90">
@@ -55,9 +53,10 @@ export default function Header({ title = 'aurawork' }: HeaderProps) {
             <span className="md:hidden">{formatDateTime(currentTime, true)}</span>
           </span>
         </div>
-        <Button variant="outline" className="bg-blue-400/50 hover:bg-blue-500/50">出勤</Button>
+        <Button variant="outline" className="bg-blue-400/50 hover:bg-blue-500/50">
+          出勤
+        </Button>
       </div>
     </header>
   )
 }
-

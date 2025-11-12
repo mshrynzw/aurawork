@@ -136,9 +136,7 @@ export default function LeaveRequestsIndex() {
                       {new Date(request.start_date).toLocaleDateString('ja-JP')}
                     </div>
                   </TableCell>
-                  <TableCell>
-                    {new Date(request.end_date).toLocaleDateString('ja-JP')}
-                  </TableCell>
+                  <TableCell>{new Date(request.end_date).toLocaleDateString('ja-JP')}</TableCell>
                   <TableCell>{request.days}日</TableCell>
                   <TableCell>{request.reason || '-'}</TableCell>
                   <TableCell>
@@ -162,7 +160,6 @@ export default function LeaveRequestsIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-(LeaveRequestsIndex as any).layout = (page: React.ReactNode) => (
+;(LeaveRequestsIndex as any).layout = (page: React.ReactNode) => (
   <Layout title="休暇申請一覧">{page}</Layout>
 )
-

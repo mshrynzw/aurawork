@@ -46,10 +46,14 @@ export default function AppSidebar() {
   }
 
   return (
-    <Sidebar variant="sidebar" collapsible="icon" className="backdrop-blur-lg bg-black/50 shadow-lg px-4 py-2 overflow-visible">
+    <Sidebar
+      variant="sidebar"
+      collapsible="icon"
+      className="backdrop-blur-lg bg-black/50 shadow-lg px-4 py-2 overflow-visible"
+    >
       <SidebarHeader className="border rounded-lg border-white/20 pb-4 shadow-lg bg-transparent">
         <div className="flex items-center gap-2 px-2">
-          <span 
+          <span
             className="text-4xl font-semibold tracking-wider animate-dimlight box-reflect group-data-[collapsible=icon]:hidden"
             data-text="aurawork"
           >
@@ -69,7 +73,7 @@ export default function AppSidebar() {
                     asChild
                     isActive={isActive('/')}
                     className={cn(
-                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg' ,
+                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg',
                       'hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20',
                       isActive('/')
                         ? 'sidebar-menu-button-active bg-blue-400/50! text-white! hover:bg-blue-500/50!'
@@ -98,7 +102,7 @@ export default function AppSidebar() {
                     asChild
                     isActive={isActive('/time-entries')}
                     className={cn(
-                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg' ,
+                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg',
                       'hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20',
                       isActive('/time-entries')
                         ? 'sidebar-menu-button-active bg-blue-400/50! text-white! hover:bg-blue-500/50!'
@@ -118,7 +122,7 @@ export default function AppSidebar() {
                     asChild
                     isActive={isActive('/leave-requests')}
                     className={cn(
-                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg' ,
+                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg',
                       'hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20',
                       isActive('/leave-requests')
                         ? 'sidebar-menu-button-active bg-blue-400/50! text-white! hover:bg-blue-500/50!'
@@ -138,7 +142,7 @@ export default function AppSidebar() {
                     asChild
                     isActive={isActive('/leave-balances')}
                     className={cn(
-                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg' ,
+                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg',
                       'hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20',
                       isActive('/leave-balances')
                         ? 'sidebar-menu-button-active bg-blue-400/50! text-white! hover:bg-blue-500/50!'
@@ -167,7 +171,7 @@ export default function AppSidebar() {
                     asChild
                     isActive={isActive('/approvals')}
                     className={cn(
-                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg' ,
+                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg',
                       'hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20',
                       isActive('/approvals')
                         ? 'sidebar-menu-button-active bg-blue-400/50! text-white! hover:bg-blue-500/50!'
@@ -187,7 +191,7 @@ export default function AppSidebar() {
                     asChild
                     isActive={isActive('/pay-runs')}
                     className={cn(
-                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg' ,
+                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg',
                       'hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20',
                       isActive('/pay-runs')
                         ? 'sidebar-menu-button-active bg-blue-400/50! text-white! hover:bg-blue-500/50!'
@@ -216,7 +220,7 @@ export default function AppSidebar() {
                     asChild
                     isActive={isActive('/masters/companies')}
                     className={cn(
-                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg' ,
+                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg',
                       'hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20',
                       isActive('/masters/companies')
                         ? 'sidebar-menu-button-active bg-blue-400/50! text-white! hover:bg-blue-500/50!'
@@ -236,7 +240,7 @@ export default function AppSidebar() {
                     asChild
                     isActive={isActive('/masters/departments')}
                     className={cn(
-                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg' ,
+                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg',
                       'hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20',
                       isActive('/masters/departments')
                         ? 'sidebar-menu-button-active bg-blue-400/50! text-white! hover:bg-blue-500/50!'
@@ -256,7 +260,7 @@ export default function AppSidebar() {
                     asChild
                     isActive={isActive('/masters/employments')}
                     className={cn(
-                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg' ,
+                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg',
                       'hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20',
                       isActive('/masters/employments')
                         ? 'sidebar-menu-button-active bg-blue-400/50! text-white! hover:bg-blue-500/50!'
@@ -276,7 +280,7 @@ export default function AppSidebar() {
                     asChild
                     isActive={isActive('/masters/roles')}
                     className={cn(
-                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg' ,
+                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg',
                       'hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20',
                       isActive('/masters/roles')
                         ? 'sidebar-menu-button-active bg-blue-400/50! text-white! hover:bg-blue-500/50!'
@@ -296,7 +300,7 @@ export default function AppSidebar() {
                     asChild
                     isActive={isActive('/masters/permissions')}
                     className={cn(
-                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg' ,
+                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg',
                       'hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20',
                       isActive('/masters/permissions')
                         ? 'sidebar-menu-button-active bg-blue-400/50! text-white! hover:bg-blue-500/50!'
@@ -316,7 +320,7 @@ export default function AppSidebar() {
                     asChild
                     isActive={isActive('/masters/pay-items')}
                     className={cn(
-                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg' ,
+                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg',
                       'hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20',
                       isActive('/masters/pay-items')
                         ? 'sidebar-menu-button-active bg-blue-400/50! text-white! hover:bg-blue-500/50!'
@@ -336,7 +340,7 @@ export default function AppSidebar() {
                     asChild
                     isActive={isActive('/masters/holidays')}
                     className={cn(
-                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg' ,
+                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg',
                       'hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20',
                       isActive('/masters/holidays')
                         ? 'sidebar-menu-button-active bg-blue-400/50! text-white! hover:bg-blue-500/50!'
@@ -356,7 +360,7 @@ export default function AppSidebar() {
                     asChild
                     isActive={isActive('/masters/approval-flows')}
                     className={cn(
-                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg' ,
+                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg',
                       'hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20',
                       isActive('/masters/approval-flows')
                         ? 'sidebar-menu-button-active bg-blue-400/50! text-white! hover:bg-blue-500/50!'
@@ -385,7 +389,7 @@ export default function AppSidebar() {
                     asChild
                     isActive={isActive('/users')}
                     className={cn(
-                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg' ,
+                      'text-xl rounded-lg transition-all duration-300 relative shadow-lg',
                       'hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20',
                       isActive('/users')
                         ? 'sidebar-menu-button-active bg-blue-400/50! text-white! hover:bg-blue-500/50!'

@@ -98,7 +98,6 @@ export default function RolesIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-(RolesIndex as any).layout = (page: React.ReactNode) => (
+;(RolesIndex as any).layout = (page: React.ReactNode) => (
   <Layout title="ロールマスタ">{page}</Layout>
 )
-

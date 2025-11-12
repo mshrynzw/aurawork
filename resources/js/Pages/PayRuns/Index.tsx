@@ -127,9 +127,7 @@ export default function PayRunsIndex() {
                       {new Date(payRun.period_end).toLocaleDateString('ja-JP')}
                     </div>
                   </TableCell>
-                  <TableCell>
-                    {new Date(payRun.pay_date).toLocaleDateString('ja-JP')}
-                  </TableCell>
+                  <TableCell>{new Date(payRun.pay_date).toLocaleDateString('ja-JP')}</TableCell>
                   <TableCell>{payRun.employee_count}名</TableCell>
                   <TableCell>
                     {payRun.total_amount > 0 ? formatCurrency(payRun.total_amount) : '-'}
@@ -155,7 +153,6 @@ export default function PayRunsIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-(PayRunsIndex as any).layout = (page: React.ReactNode) => (
+;(PayRunsIndex as any).layout = (page: React.ReactNode) => (
   <Layout title="給与締め一覧">{page}</Layout>
 )
-

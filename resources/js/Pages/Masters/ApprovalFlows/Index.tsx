@@ -120,7 +120,6 @@ export default function ApprovalFlowsIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-(ApprovalFlowsIndex as any).layout = (page: React.ReactNode) => (
+;(ApprovalFlowsIndex as any).layout = (page: React.ReactNode) => (
   <Layout title="承認フローマスタ">{page}</Layout>
 )
-

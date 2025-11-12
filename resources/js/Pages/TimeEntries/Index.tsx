@@ -217,7 +217,6 @@ export default function TimeEntriesIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-(TimeEntriesIndex as any).layout = (page: React.ReactNode) => (
+;(TimeEntriesIndex as any).layout = (page: React.ReactNode) => (
   <Layout title="勤怠一覧">{page}</Layout>
 )
-

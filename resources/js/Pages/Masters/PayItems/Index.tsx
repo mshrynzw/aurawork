@@ -150,7 +150,6 @@ export default function PayItemsIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-(PayItemsIndex as any).layout = (page: React.ReactNode) => (
+;(PayItemsIndex as any).layout = (page: React.ReactNode) => (
   <Layout title="賃金項目マスタ">{page}</Layout>
 )
-

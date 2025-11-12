@@ -110,7 +110,6 @@ export default function HolidaysIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-(HolidaysIndex as any).layout = (page: React.ReactNode) => (
+;(HolidaysIndex as any).layout = (page: React.ReactNode) => (
   <Layout title="休日マスタ">{page}</Layout>
 )
-

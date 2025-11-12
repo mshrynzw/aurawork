@@ -134,7 +134,6 @@ export default function EmploymentsIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-(EmploymentsIndex as any).layout = (page: React.ReactNode) => (
+;(EmploymentsIndex as any).layout = (page: React.ReactNode) => (
   <Layout title="雇用情報マスタ">{page}</Layout>
 )
-

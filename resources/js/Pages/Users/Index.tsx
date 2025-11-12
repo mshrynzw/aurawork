@@ -64,11 +64,7 @@ export default function Index({ users }: UsersPageProps) {
           autoComplete="new-password"
           required
         />
-        <Button
-          type="submit"
-          variant="outline"
-          disabled={processing}
-        >
+        <Button type="submit" variant="outline" disabled={processing}>
           Create
         </Button>
       </form>
@@ -108,4 +104,4 @@ export default function Index({ users }: UsersPageProps) {
 }
 
 // Inertiaの"per-page layout"パターン
-(Index as any).layout = (page: React.ReactNode) => <Layout>{page}</Layout>
+;(Index as any).layout = (page: React.ReactNode) => <Layout>{page}</Layout>

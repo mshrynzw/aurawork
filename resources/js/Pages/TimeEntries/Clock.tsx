@@ -121,5 +121,4 @@ export default function TimeClock() {
 }
 
 // Inertiaの"per-page layout"パターン
-(TimeClock as any).layout = (page: React.ReactNode) => <Layout title="打刻">{page}</Layout>
-
+;(TimeClock as any).layout = (page: React.ReactNode) => <Layout title="打刻">{page}</Layout>

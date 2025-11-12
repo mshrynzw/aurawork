@@ -83,7 +83,6 @@ export default function PermissionsIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-(PermissionsIndex as any).layout = (page: React.ReactNode) => (
+;(PermissionsIndex as any).layout = (page: React.ReactNode) => (
   <Layout title="権限マスタ">{page}</Layout>
 )
-

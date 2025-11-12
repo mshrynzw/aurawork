@@ -2,12 +2,18 @@ import React from 'react'
 import Layout from '@/Components/layout/Layout'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/ui/card'
 import { Badge } from '@/Components/ui/badge'
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/Components/ui/chart'
 import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from '@/Components/ui/chart'
-import { Bar, BarChart, Line, LineChart, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Legend } from 'recharts'
+  Bar,
+  BarChart,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Legend,
+} from 'recharts'
 
 //TODO: 値は仮のまま
 const attendanceData = [
@@ -166,9 +172,7 @@ export default function Dashboard() {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">年次有給休暇</span>
-                <Badge variant="secondary">
-                  {leaveBalanceData.annual.remaining}日
-                </Badge>
+                <Badge variant="secondary">{leaveBalanceData.annual.remaining}日</Badge>
               </div>
               <div className="text-xs text-muted-foreground">
                 付与: {leaveBalanceData.annual.granted}日 / 取得: {leaveBalanceData.annual.taken}日
@@ -177,9 +181,7 @@ export default function Dashboard() {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">病休</span>
-                <Badge variant="secondary">
-                  {leaveBalanceData.sick.remaining}日
-                </Badge>
+                <Badge variant="secondary">{leaveBalanceData.sick.remaining}日</Badge>
               </div>
               <div className="text-xs text-muted-foreground">
                 付与: {leaveBalanceData.sick.granted}日 / 取得: {leaveBalanceData.sick.taken}日
@@ -188,12 +190,11 @@ export default function Dashboard() {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">特別休暇</span>
-                <Badge variant="secondary">
-                  {leaveBalanceData.special.remaining}日
-                </Badge>
+                <Badge variant="secondary">{leaveBalanceData.special.remaining}日</Badge>
               </div>
               <div className="text-xs text-muted-foreground">
-                付与: {leaveBalanceData.special.granted}日 / 取得: {leaveBalanceData.special.taken}日
+                付与: {leaveBalanceData.special.granted}日 / 取得: {leaveBalanceData.special.taken}
+                日
               </div>
             </div>
           </div>
@@ -232,5 +233,6 @@ export default function Dashboard() {
 }
 
 // Inertiaの"per-page layout"パターン
-(Dashboard as any).layout = (page: React.ReactNode) => <Layout title="ダッシュボード">{page}</Layout>
-
+;(Dashboard as any).layout = (page: React.ReactNode) => (
+  <Layout title="ダッシュボード">{page}</Layout>
+)

@@ -1,13 +1,13 @@
 import React from 'react'
 
-export default function Form({ data, setData, processing, onSubmit, submitLabel='Save' }) {
+export default function Form({ data, setData, processing, onSubmit, submitLabel = 'Save' }) {
   return (
     <form onSubmit={onSubmit} className="grid gap-4 max-w-lg">
       <input
         className="rounded border border-white/20 bg-transparent px-3 py-2 text-white placeholder:text-white/50"
         placeholder="Name"
         value={data.name || ''}
-        onChange={e=>setData('name', e.target.value)}
+        onChange={e => setData('name', e.target.value)}
         autoComplete="name"
         required
       />
@@ -16,7 +16,7 @@ export default function Form({ data, setData, processing, onSubmit, submitLabel=
         type="email"
         placeholder="Email"
         value={data.email || ''}
-        onChange={e=>setData('email', e.target.value)}
+        onChange={e => setData('email', e.target.value)}
         autoComplete="email"
         required
       />
@@ -25,7 +25,7 @@ export default function Form({ data, setData, processing, onSubmit, submitLabel=
         type="password"
         placeholder="Password (leave blank to keep)"
         value={data.password || ''}
-        onChange={e=>setData('password', e.target.value)}
+        onChange={e => setData('password', e.target.value)}
         autoComplete="new-password"
       />
       <button

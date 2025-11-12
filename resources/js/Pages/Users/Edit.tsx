@@ -13,7 +13,7 @@ export default function Edit({ user }) {
     password: '',
   })
 
-  const submit = (e) => {
+  const submit = e => {
     e.preventDefault()
     put(`/users/${user.id}`)
   }
@@ -21,7 +21,9 @@ export default function Edit({ user }) {
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-4">
-        <Link href="/users" className="text-blue-400 hover:text-blue-300">← Back</Link>
+        <Link href="/users" className="text-blue-400 hover:text-blue-300">
+          ← Back
+        </Link>
         <h2 className="text-xl font-semibold">Edit User #{user.id}</h2>
       </div>
 
@@ -36,10 +38,16 @@ export default function Edit({ user }) {
         </div>
       )}
 
-      <Form data={data} setData={setData} processing={processing} onSubmit={submit} submitLabel="Update" />
+      <Form
+        data={data}
+        setData={setData}
+        processing={processing}
+        onSubmit={submit}
+        submitLabel="Update"
+      />
     </div>
   )
 }
 
 // Inertiaの"per-page layout"パターン
-(Edit as any).layout = (page: React.ReactNode) => <Layout title="Edit User">{page}</Layout>
+;(Edit as any).layout = (page: React.ReactNode) => <Layout title="Edit User">{page}</Layout>
