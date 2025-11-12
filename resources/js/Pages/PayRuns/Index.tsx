@@ -93,10 +93,6 @@ export default function PayRunsIndex() {
   return (
     <div className="w-full space-y-6">
       <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold">給与締め一覧</h1>
-          <p className="text-muted-foreground">給与締め処理の確認と管理</p>
-        </div>
         <Button>
           <DollarSign className="mr-2 h-4 w-4" />
           新規締め処理

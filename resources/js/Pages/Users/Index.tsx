@@ -40,8 +40,6 @@ export default function Index({ users }: UsersPageProps) {
 
   return (
     <div className="w-full space-y-4">
-      <h2 className="text-xl font-semibold">Users</h2>
-
       <form onSubmit={submit} className="flex gap-2">
         <Input
           placeholder="Name"

@@ -51,10 +51,6 @@ export default function RolesIndex() {
   return (
     <div className="w-full space-y-6">
       <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold">ロールマスタ</h1>
-          <p className="text-muted-foreground">ロール（役割）の管理</p>
-        </div>
         <Button>
           <Plus className="mr-2 h-4 w-4" />
           新規登録

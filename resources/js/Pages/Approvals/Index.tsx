@@ -165,11 +165,6 @@ function ApprovalActionDialog({ approval }: { approval: Approval }) {
 export default function ApprovalsIndex() {
   return (
     <div className="w-full space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold">承認一覧</h1>
-        <p className="text-muted-foreground">承認が必要な申請の確認と処理</p>
-      </div>
-
       <Card>
         <CardHeader>
           <CardTitle>承認待ち一覧</CardTitle>

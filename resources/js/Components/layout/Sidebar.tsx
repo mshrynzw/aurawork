@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from '@inertiajs/react'
+import { Link, usePage, router } from '@inertiajs/react'
 import {
   Sidebar,
   SidebarContent,
@@ -26,14 +26,33 @@ import {
   Key,
   Coins,
   Workflow,
+  LogOut,
 } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 export default function AppSidebar() {
+  const { url } = usePage()
+
+  const isActive = (href: string) => {
+    if (href === '/') {
+      return url === '/'
+    }
+    return url.startsWith(href)
+  }
+
+  const handleLogout = (e: React.MouseEvent) => {
+    e.preventDefault()
+    router.post('/logout')
+  }
+
   return (
     <Sidebar variant="sidebar" collapsible="icon" className="backdrop-blur-lg bg-black/50 shadow-lg px-4 py-2">
       <SidebarHeader className="border rounded-lg border-white/20 pb-4 shadow-lg bg-transparent">
         <div className="flex items-center gap-2 px-2">
-          <span className="text-4xl font-semibold text-white/90 group-data-[collapsible=icon]:hidden">
+          <span 
+            className="text-4xl font-semibold tracking-wider animate-dimlight box-reflect group-data-[collapsible=icon]:hidden"
+            data-text="aurawork"
+          >
             aurawork
           </span>
         </div>
@@ -45,7 +64,16 @@ export default function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild className="text-xl">
+                <SidebarMenuButton
+                  asChild
+                  isActive={isActive('/')}
+                  className={cn(
+                    'text-xl rounded-lg transition-colors',
+                    isActive('/')
+                      ? '!bg-blue-400/50 !text-white hover:!bg-blue-500/50'
+                      : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                  )}
+                >
                   <Link href="/">
                     <Home />
                     <span>ダッシュボード</span>
@@ -62,7 +90,16 @@ export default function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild className="text-xl">
+                <SidebarMenuButton
+                  asChild
+                  isActive={isActive('/time-entries')}
+                  className={cn(
+                    'text-xl rounded-lg transition-colors',
+                    isActive('/time-entries')
+                      ? '!bg-blue-400/50 !text-white hover:!bg-blue-500/50'
+                      : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                  )}
+                >
                   <Link href="/time-entries">
                     <Clock />
                     <span>勤怠一覧</span>
@@ -70,7 +107,16 @@ export default function AppSidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild className="text-xl">
+                <SidebarMenuButton
+                  asChild
+                  isActive={isActive('/leave-requests')}
+                  className={cn(
+                    'text-xl rounded-lg transition-colors',
+                    isActive('/leave-requests')
+                      ? '!bg-blue-400/50 !text-white hover:!bg-blue-500/50'
+                      : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                  )}
+                >
                   <Link href="/leave-requests">
                     <Calendar />
                     <span>休暇申請</span>
@@ -78,7 +124,16 @@ export default function AppSidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild className="text-xl">
+                <SidebarMenuButton
+                  asChild
+                  isActive={isActive('/leave-balances')}
+                  className={cn(
+                    'text-xl rounded-lg transition-colors',
+                    isActive('/leave-balances')
+                      ? '!bg-blue-400/50 !text-white hover:!bg-blue-500/50'
+                      : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                  )}
+                >
                   <Link href="/leave-balances">
                     <Calendar />
                     <span>休暇残高</span>
@@ -95,7 +150,16 @@ export default function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild className="text-xl">
+                <SidebarMenuButton
+                  asChild
+                  isActive={isActive('/approvals')}
+                  className={cn(
+                    'text-xl rounded-lg transition-colors',
+                    isActive('/approvals')
+                      ? '!bg-blue-400/50 !text-white hover:!bg-blue-500/50'
+                      : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                  )}
+                >
                   <Link href="/approvals">
                     <CheckCircle />
                     <span>承認一覧</span>
@@ -103,7 +167,16 @@ export default function AppSidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild className="text-xl">
+                <SidebarMenuButton
+                  asChild
+                  isActive={isActive('/pay-runs')}
+                  className={cn(
+                    'text-xl rounded-lg transition-colors',
+                    isActive('/pay-runs')
+                      ? '!bg-blue-400/50 !text-white hover:!bg-blue-500/50'
+                      : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                  )}
+                >
                   <Link href="/pay-runs">
                     <DollarSign />
                     <span>給与締め</span>
@@ -120,7 +193,16 @@ export default function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild className="text-xl">
+                <SidebarMenuButton
+                  asChild
+                  isActive={isActive('/masters/companies')}
+                  className={cn(
+                    'text-xl rounded-lg transition-colors',
+                    isActive('/masters/companies')
+                      ? '!bg-blue-400/50 !text-white hover:!bg-blue-500/50'
+                      : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                  )}
+                >
                   <Link href="/masters/companies">
                     <Building2 />
                     <span>会社</span>
@@ -128,7 +210,16 @@ export default function AppSidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild className="text-xl">
+                <SidebarMenuButton
+                  asChild
+                  isActive={isActive('/masters/departments')}
+                  className={cn(
+                    'text-xl rounded-lg transition-colors',
+                    isActive('/masters/departments')
+                      ? '!bg-blue-400/50 !text-white hover:!bg-blue-500/50'
+                      : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                  )}
+                >
                   <Link href="/masters/departments">
                     <FolderTree />
                     <span>部門</span>
@@ -136,7 +227,16 @@ export default function AppSidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild className="text-xl">
+                <SidebarMenuButton
+                  asChild
+                  isActive={isActive('/masters/employments')}
+                  className={cn(
+                    'text-xl rounded-lg transition-colors',
+                    isActive('/masters/employments')
+                      ? '!bg-blue-400/50 !text-white hover:!bg-blue-500/50'
+                      : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                  )}
+                >
                   <Link href="/masters/employments">
                     <Briefcase />
                     <span>雇用情報</span>
@@ -144,7 +244,16 @@ export default function AppSidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild className="text-xl">
+                <SidebarMenuButton
+                  asChild
+                  isActive={isActive('/masters/roles')}
+                  className={cn(
+                    'text-xl rounded-lg transition-colors',
+                    isActive('/masters/roles')
+                      ? '!bg-blue-400/50 !text-white hover:!bg-blue-500/50'
+                      : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                  )}
+                >
                   <Link href="/masters/roles">
                     <Shield />
                     <span>ロール</span>
@@ -152,7 +261,16 @@ export default function AppSidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild className="text-xl">
+                <SidebarMenuButton
+                  asChild
+                  isActive={isActive('/masters/permissions')}
+                  className={cn(
+                    'text-xl rounded-lg transition-colors',
+                    isActive('/masters/permissions')
+                      ? '!bg-blue-400/50 !text-white hover:!bg-blue-500/50'
+                      : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                  )}
+                >
                   <Link href="/masters/permissions">
                     <Key />
                     <span>権限</span>
@@ -160,7 +278,16 @@ export default function AppSidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild className="text-xl">
+                <SidebarMenuButton
+                  asChild
+                  isActive={isActive('/masters/pay-items')}
+                  className={cn(
+                    'text-xl rounded-lg transition-colors',
+                    isActive('/masters/pay-items')
+                      ? '!bg-blue-400/50 !text-white hover:!bg-blue-500/50'
+                      : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                  )}
+                >
                   <Link href="/masters/pay-items">
                     <Coins />
                     <span>賃金項目</span>
@@ -168,7 +295,16 @@ export default function AppSidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild className="text-xl">
+                <SidebarMenuButton
+                  asChild
+                  isActive={isActive('/masters/holidays')}
+                  className={cn(
+                    'text-xl rounded-lg transition-colors',
+                    isActive('/masters/holidays')
+                      ? '!bg-blue-400/50 !text-white hover:!bg-blue-500/50'
+                      : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                  )}
+                >
                   <Link href="/masters/holidays">
                     <Calendar />
                     <span>休日</span>
@@ -176,7 +312,16 @@ export default function AppSidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild className="text-xl">
+                <SidebarMenuButton
+                  asChild
+                  isActive={isActive('/masters/approval-flows')}
+                  className={cn(
+                    'text-xl rounded-lg transition-colors',
+                    isActive('/masters/approval-flows')
+                      ? '!bg-blue-400/50 !text-white hover:!bg-blue-500/50'
+                      : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                  )}
+                >
                   <Link href="/masters/approval-flows">
                     <Workflow />
                     <span>承認フロー</span>
@@ -193,11 +338,31 @@ export default function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild className="text-xl">
+                <SidebarMenuButton
+                  asChild
+                  isActive={isActive('/users')}
+                  className={cn(
+                    'text-xl rounded-lg transition-colors',
+                    isActive('/users')
+                      ? '!bg-blue-400/50 !text-white hover:!bg-blue-500/50'
+                      : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                  )}
+                >
                   <Link href="/users">
                     <Users />
                     <span>ユーザー</span>
                   </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  onClick={handleLogout}
+                  className={cn(
+                    'text-xl rounded-lg transition-colors bg-gray-800/50 text-gray-300 hover:bg-red-600/50 hover:text-white'
+                  )}
+                >
+                  <LogOut />
+                  <span>ログアウト</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>

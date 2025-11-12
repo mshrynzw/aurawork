@@ -38,10 +38,6 @@ export default function PermissionsIndex() {
   return (
     <div className="w-full space-y-6">
       <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold">権限マスタ</h1>
-          <p className="text-muted-foreground">権限の管理</p>
-        </div>
         <Button>
           <Plus className="mr-2 h-4 w-4" />
           新規登録

@@ -66,11 +66,6 @@ const calculateUsageRate = (balance: LeaveBalance) => {
 export default function LeaveBalancesIndex() {
   return (
     <div className="w-full space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold">休暇残高</h1>
-        <p className="text-muted-foreground">各種休暇の残高状況を確認</p>
-      </div>
-
       <div className="grid gap-6 md:grid-cols-3">
         {leaveBalances.map(balance => {
           const remaining = calculateRemaining(balance)

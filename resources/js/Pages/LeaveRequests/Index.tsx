@@ -99,10 +99,6 @@ export default function LeaveRequestsIndex() {
   return (
     <div className="w-full space-y-6">
       <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold">休暇申請一覧</h1>
-          <p className="text-muted-foreground">休暇申請の確認と管理</p>
-        </div>
         <Button asChild>
           <Link href="/leave-requests/create">
             <Plus className="mr-2 h-4 w-4" />

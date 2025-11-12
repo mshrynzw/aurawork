@@ -112,10 +112,6 @@ export default function TimeEntriesIndex() {
   return (
     <div className="w-full space-y-6">
       <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold">勤怠一覧</h1>
-          <p className="text-muted-foreground">勤務実績の確認と申請</p>
-        </div>
         <div className="flex gap-2">
           <Button asChild>
             <Link href="/time-entries/clock">
