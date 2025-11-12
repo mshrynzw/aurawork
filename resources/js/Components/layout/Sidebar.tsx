@@ -42,7 +42,7 @@ export default function AppSidebar() {
 
   const handleLogout = (e: React.MouseEvent) => {
     e.preventDefault()
-    router.post('/logout')
+    router.get('/login')
   }
 
   return (
