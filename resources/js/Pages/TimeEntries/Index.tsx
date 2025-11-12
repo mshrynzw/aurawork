@@ -111,22 +111,21 @@ const calculateWorkHours = (entry: TimeEntry) => {
 export default function TimeEntriesIndex() {
   return (
     <div className="w-full space-y-6">
-      <div className="flex items-center justify-between">
-        <div className="flex gap-2">
-          <Button asChild>
-            <Link href="/time-entries/clock">
-              <Clock className="mr-2 h-4 w-4" />
-              打刻
-            </Link>
-          </Button>
-        </div>
-      </div>
-
       {/* 今月のサマリー */}
       <Card>
         <CardHeader>
-          <CardTitle>今月のサマリー</CardTitle>
-          <CardDescription>2025年11月</CardDescription>
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle>今月のサマリー</CardTitle>
+              <CardDescription>2025年11月</CardDescription>
+            </div>
+            <Button asChild>
+              <Link href="/time-entries/clock">
+                <Clock className="mr-2 h-4 w-4" />
+                打刻
+              </Link>
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4 md:grid-cols-4">

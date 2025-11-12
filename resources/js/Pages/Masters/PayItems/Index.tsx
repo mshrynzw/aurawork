@@ -90,20 +90,21 @@ const calcBaseLabel = (base: PayItem['calc_base']) => {
 export default function PayItemsIndex() {
   return (
     <div className="w-full space-y-6">
-      <div className="flex items-center justify-between">
-        <Button>
-          <Plus className="mr-2 h-4 w-4" />
-          新規登録
-        </Button>
-      </div>
-
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Coins className="h-5 w-5" />
-            賃金項目一覧
-          </CardTitle>
-          <CardDescription>登録されている賃金項目の一覧</CardDescription>
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle className="flex items-center gap-2">
+                <Coins className="h-5 w-5" />
+                賃金項目一覧
+              </CardTitle>
+              <CardDescription>登録されている賃金項目の一覧</CardDescription>
+            </div>
+            <Button>
+              <Plus className="mr-2 h-4 w-4" />
+              新規登録
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           <Table>

@@ -51,20 +51,21 @@ const holidays: Holiday[] = [
 export default function HolidaysIndex() {
   return (
     <div className="w-full space-y-6">
-      <div className="flex items-center justify-between">
-        <Button>
-          <Plus className="mr-2 h-4 w-4" />
-          新規登録
-        </Button>
-      </div>
-
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Calendar className="h-5 w-5" />
-            休日一覧
-          </CardTitle>
-          <CardDescription>登録されている休日の一覧</CardDescription>
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle className="flex items-center gap-2">
+                <Calendar className="h-5 w-5" />
+                休日一覧
+              </CardTitle>
+              <CardDescription>登録されている休日の一覧</CardDescription>
+            </div>
+            <Button>
+              <Plus className="mr-2 h-4 w-4" />
+              新規登録
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           <Table>

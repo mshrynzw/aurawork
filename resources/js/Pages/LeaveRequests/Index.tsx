@@ -98,19 +98,20 @@ const statusLabel = (status: LeaveRequest['status']) => {
 export default function LeaveRequestsIndex() {
   return (
     <div className="w-full space-y-6">
-      <div className="flex items-center justify-between">
-        <Button asChild>
-          <Link href="/leave-requests/create">
-            <Plus className="mr-2 h-4 w-4" />
-            新規申請
-          </Link>
-        </Button>
-      </div>
-
       <Card>
         <CardHeader>
-          <CardTitle>申請一覧</CardTitle>
-          <CardDescription>過去の休暇申請一覧</CardDescription>
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle>申請一覧</CardTitle>
+              <CardDescription>過去の休暇申請一覧</CardDescription>
+            </div>
+            <Button asChild>
+              <Link href="/leave-requests/create">
+                <Plus className="mr-2 h-4 w-4" />
+                新規申請
+              </Link>
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           <Table>

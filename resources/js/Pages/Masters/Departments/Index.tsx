@@ -54,20 +54,21 @@ const departments: Department[] = [
 export default function DepartmentsIndex() {
   return (
     <div className="w-full space-y-6">
-      <div className="flex items-center justify-between">
-        <Button>
-          <Plus className="mr-2 h-4 w-4" />
-          新規登録
-        </Button>
-      </div>
-
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <FolderTree className="h-5 w-5" />
-            部門一覧
-          </CardTitle>
-          <CardDescription>登録されている部門の一覧</CardDescription>
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle className="flex items-center gap-2">
+                <FolderTree className="h-5 w-5" />
+                部門一覧
+              </CardTitle>
+              <CardDescription>登録されている部門の一覧</CardDescription>
+            </div>
+            <Button>
+              <Plus className="mr-2 h-4 w-4" />
+              新規登録
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           <Table>

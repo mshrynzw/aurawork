@@ -92,17 +92,18 @@ const formatCurrency = (amount: number) => {
 export default function PayRunsIndex() {
   return (
     <div className="w-full space-y-6">
-      <div className="flex items-center justify-between">
-        <Button>
-          <DollarSign className="mr-2 h-4 w-4" />
-          新規締め処理
-        </Button>
-      </div>
-
       <Card>
         <CardHeader>
-          <CardTitle>締め処理一覧</CardTitle>
-          <CardDescription>過去の給与締め処理一覧</CardDescription>
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle>締め処理一覧</CardTitle>
+              <CardDescription>過去の給与締め処理一覧</CardDescription>
+            </div>
+            <Button>
+              <DollarSign className="mr-2 h-4 w-4" />
+              新規締め処理
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           <Table>
