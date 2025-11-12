@@ -1,10 +1,24 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "mshrynzw/aurawork",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
-    "license": "MIT",
+    "version": "0.01.017",
+    "description": "Aurawork is a human resource management platform that integrates attendance, leave, salary, and approval management.",
+    "homepage": "https://github.com/mshrynzw/aurawork",
+    "support": {
+        "issues": "https://github.com/mshrynzw/aurawork/issues",
+        "source": "https://github.com/mshrynzw/aurawork"
+    },
+    "keywords": ["laravel", "framework", "aurawork"],
+    "license": "AGPL-3.0",
+    "authors": [
+        {
+            "name": "mshrynzw",
+            "email": "iq87io25@gmail.com",
+            "role": "Developer",
+            "homepage": "https://github.com/mshrynzw"
+        }
+    ],
     "require": {
         "php": "^8.2",
         "inertiajs/inertia-laravel": "^2.0",

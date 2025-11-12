@@ -3,7 +3,7 @@ import { useForm, router } from '@inertiajs/react'
 import { Button } from '@/Components/ui/button'
 import { Input } from '@/Components/ui/input'
 import { Label } from '@/Components/ui/label'
-import { Card, CardContent, CardHeader, CardTitle } from '@/Components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/Components/ui/card'
 import AuroraBackground from '@/Components/layout/AuroraBackground'
 import { toast } from '@/hooks/use-toast'
 import { Toaster } from '@/Components/ui/toaster'
@@ -13,6 +13,8 @@ export default function Login() {
     email: '',
     password: '',
   })
+
+  const appVersion = '0.01.017'
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -35,6 +37,9 @@ export default function Login() {
           >
             aurawork
           </CardTitle>
+          <CardDescription className="text-center text-muted-foreground">
+            Version {appVersion}
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={submit} className="space-y-4">
