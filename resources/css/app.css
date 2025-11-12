@@ -384,8 +384,71 @@
     width: 0;
     height: 0;
   }
+
+  /* 画面全体のスクロールバーカスタマイズ */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(8, 33, 110, 0.5) transparent;
+  }
+
+  html::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  html::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background: rgba(8, 33, 110, 0.9);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+
+  html::-webkit-scrollbar-thumb:hover {
+    background: rgba(8, 33, 110, 0.9);
+  }
+
+  /* 上下の矢印を非表示 */
+  html::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* メインコンテンツエリアのスクロールバーカスタマイズ */
+  [data-sidebar="inset"] {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(8, 33, 110, 0.5) transparent;
+  }
+
+  [data-sidebar="inset"]::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  [data-sidebar="inset"]::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  [data-sidebar="inset"]::-webkit-scrollbar-thumb {
+    background: rgba(8, 33, 110, 0.9);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+
+  [data-sidebar="inset"]::-webkit-scrollbar-thumb:hover {
+    background: rgba(8, 33, 110, 0.9);
+  }
+
+  /* 上下の矢印を非表示 */
+  [data-sidebar="inset"]::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+  }
 }
 
+/* ロゴと日時のフォント */
 .aurawork-logo {
   font-family: "Modern Antiqua", serif;
   font-weight: 400;
