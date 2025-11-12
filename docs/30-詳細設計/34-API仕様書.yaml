@@ -1,0 +1,50 @@
+openapi: 3.1.0
+info:
+  title: Aurawork API
+  version: "1.0.0"
+servers:
+  - url: https://api.aurawork.example.com
+paths:
+  /login:
+    post:
+      summary: ログイン
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: {type: string, format: email}
+                password: {type: string}
+      responses:
+        "200": {description: OK}
+  /time-entries:
+    get:
+      summary: 勤怠一覧
+      responses:
+        "200":
+          description: OK
+    post:
+      summary: 勤怠登録
+      responses:
+        "201": {description: Created}
+  /leave-requests:
+    get:
+      summary: 休暇一覧
+      responses:
+        "200": {description: OK}
+    post:
+      summary: 休暇申請
+      responses:
+        "201": {description: Created}
+components:
+  schemas:
+    TimeEntry:
+      type: object
+      properties:
+        id: {type: integer}
+        work_date: {type: string, format: date}
+        clock_in: {type: string, format: date-time, nullable: true}
+        clock_out: {type: string, format: date-time, nullable: true}

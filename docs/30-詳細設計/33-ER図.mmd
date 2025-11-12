@@ -1,0 +1,62 @@
+classDiagram
+classDef master fill:#e8f1ff,stroke:#4a78ff,stroke-width:1px,color:#0b2b6b
+classDef trans  fill:#e8f9ef,stroke:#2e8b57,stroke-width:1px,color:#124d2d
+classDef rel    fill:#fffbea,stroke:#b08400,stroke-width:1px,color:#5f4500
+classDef hist   fill:#f3e8ff,stroke:#7a3af9,stroke-width:1px,color:#361b6b
+
+class m_companies {{<<会社マスタ>> id name code timezone start_of_week}}
+class m_departments {{<<部門マスタ>> id company_id name code parent_id}}
+class m_users {{<<ユーザーマスタ>> id company_id department_id email name_last name_first status}}
+class m_employments {{<<雇用情報マスタ>> id user_id employment_type effective_from}}
+class m_roles {{<<ロールマスタ>> id company_id slug name}}
+class m_permissions {{<<権限マスタ>> id key}}
+class m_pay_items {{<<賃金項目マスタ>> id company_id code name kind calc_base}}
+class m_holidays {{<<休日マスタ>> id company_id date name is_national}}
+class m_approval_flows {{<<承認フローマスタ>> id company_id name target is_active}}
+class m_approval_steps {{<<承認ステップマスタ>> id approval_flow_id step_order approver_type approver_role_id approver_user_id}}
+
+class t_schedules {{<<勤務予定>> id user_id work_date start_time end_time break_minutes}}
+class t_time_entries {{<<勤怠実績/打刻>> id user_id work_date clock_in clock_out status overtime_minutes}}
+class t_leave_requests {{<<休暇申請>> id user_id type start_date end_date days status}}
+class t_leave_balances {{<<休暇残高>> id user_id type period_start period_end granted taken carryover}}
+class t_pay_runs {{<<給与締め/支給処理>> id company_id period_start period_end pay_date status}}
+class t_pay_slips {{<<給与明細>> id pay_run_id user_id gross_amount net_amount status}}
+class t_pay_lines {{<<給与明細行>> id pay_slip_id pay_item_id quantity rate amount}}
+class t_approval_bindings {{<<承認対象紐づけ>> id flow_id target_table target_id current_step status}}
+
+class r_user_roles {{<<ユーザー×ロール対応>> id user_id role_id}}
+class r_role_permissions {{<<ロール×権限対応>> id role_id permission_id}}
+class h_approvals {{<<承認履歴>> id binding_id step_order approver_user_id action acted_at}}
+
+m_companies "1" --> "0..*" m_departments
+m_companies "1" --> "0..*" m_users
+m_departments "1" --> "0..*" m_users
+m_users "1" --> "0..*" m_employments
+
+m_roles "1" --> "0..*" r_role_permissions
+m_permissions "1" --> "0..*" r_role_permissions
+m_users "1" --> "0..*" r_user_roles
+m_roles "1" --> "0..*" r_user_roles
+
+m_users "1" --> "0..*" t_schedules
+m_users "1" --> "0..*" t_time_entries
+m_users "1" --> "0..*" t_leave_requests
+m_users "1" --> "0..*" t_leave_balances
+m_companies "1" --> "0..*" m_holidays
+
+m_companies "1" --> "0..*" m_pay_items
+m_companies "1" --> "0..*" t_pay_runs
+t_pay_runs "1" --> "0..*" t_pay_slips
+m_users "1" --> "0..*" t_pay_slips
+t_pay_slips "1" --> "0..*" t_pay_lines
+m_pay_items "1" --> "0..*" t_pay_lines
+
+m_approval_flows "1" --> "0..*" m_approval_steps
+m_approval_flows "1" --> "0..*" t_approval_bindings
+t_approval_bindings "1" --> "0..*" h_approvals
+m_users "1" --> "0..*" h_approvals
+
+class m_companies,m_departments,m_users,m_employments,m_roles,m_permissions,m_pay_items,m_holidays,m_approval_flows,m_approval_steps master
+class t_schedules,t_time_entries,t_leave_requests,t_leave_balances,t_pay_runs,t_pay_slips,t_pay_lines,t_approval_bindings trans
+class r_user_roles,r_role_permissions rel
+class h_approvals hist
