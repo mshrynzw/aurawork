@@ -24,7 +24,7 @@ export default function Login() {
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle
-            className="text-4xl font-semibold tracking-wider animate-dimlight box-reflect self-center"
+            className="text-4xl font-semibold tracking-wider animate-dimlight box-reflect self-center aurawork-logo"
             data-text="aurawork"
           >
             aurawork

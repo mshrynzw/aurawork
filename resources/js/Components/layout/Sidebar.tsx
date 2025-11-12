@@ -54,7 +54,7 @@ export default function AppSidebar() {
       <SidebarHeader className="border rounded-lg border-white/20 pb-4 shadow-lg bg-transparent">
         <div className="flex items-center gap-2 px-2">
           <span
-            className="text-4xl font-semibold tracking-wider animate-dimlight box-reflect group-data-[collapsible=icon]:hidden"
+            className="text-4xl font-semibold tracking-wider animate-dimlight box-reflect group-data-[collapsible=icon]:hidden aurawork-logo"
             data-text="aurawork"
           >
             aurawork
