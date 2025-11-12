@@ -1,0 +1,111 @@
+import React from 'react'
+import { Link } from '@inertiajs/react'
+import Layout from '@/Components/layout/Layout'
+import { Button } from '@/Components/ui/button'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/Components/ui/table'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/ui/card'
+import { Plus, FolderTree } from 'lucide-react'
+
+//TODO: 値は仮のまま
+type Department = {
+  id: number
+  company_id: number
+  name: string
+  code: string
+  parent_id: number | null
+  parent_name: string | null
+}
+
+//TODO: 値は仮のまま
+const departments: Department[] = [
+  {
+    id: 1,
+    company_id: 1,
+    name: '営業部',
+    code: 'SALES',
+    parent_id: null,
+    parent_name: null,
+  },
+  {
+    id: 2,
+    company_id: 1,
+    name: '営業一課',
+    code: 'SALES-1',
+    parent_id: 1,
+    parent_name: '営業部',
+  },
+  {
+    id: 3,
+    company_id: 1,
+    name: '開発部',
+    code: 'DEV',
+    parent_id: null,
+    parent_name: null,
+  },
+]
+
+export default function DepartmentsIndex() {
+  return (
+    <div className="w-full space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold">部門マスタ</h1>
+          <p className="text-muted-foreground">部門情報の管理</p>
+        </div>
+        <Button>
+          <Plus className="mr-2 h-4 w-4" />
+          新規登録
+        </Button>
+      </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FolderTree className="h-5 w-5" />
+            部門一覧
+          </CardTitle>
+          <CardDescription>登録されている部門の一覧</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>部門コード</TableHead>
+                <TableHead>部門名</TableHead>
+                <TableHead>親部門</TableHead>
+                <TableHead>操作</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {departments.map(department => (
+                <TableRow key={department.id}>
+                  <TableCell className="font-mono">{department.code}</TableCell>
+                  <TableCell>{department.name}</TableCell>
+                  <TableCell>{department.parent_name || '-'}</TableCell>
+                  <TableCell>
+                    <Button variant="ghost" size="sm" asChild>
+                      <Link href={`/masters/departments/${department.id}/edit`}>編集</Link>
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
+
+// Inertiaの"per-page layout"パターン
+(DepartmentsIndex as any).layout = (page: React.ReactNode) => (
+  <Layout title="部門マスタ">{page}</Layout>
+)
+
