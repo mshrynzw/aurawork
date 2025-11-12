@@ -212,6 +212,135 @@
     mask-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
     pointer-events: none;
   }
+
+  /* サイドバーメニューアニメーション */
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes iconPulse {
+    0%, 100% {
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+
+  @keyframes activeIndicator {
+    0% {
+      transform: scaleY(0.8);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scaleY(1.1);
+      opacity: 1;
+    }
+    100% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.4);
+    }
+  }
+
+  .sidebar-menu-item {
+    animation: slideInLeft 0.3s ease-out backwards;
+  }
+
+  .sidebar-menu-item:nth-child(1) { animation-delay: 0.05s; }
+  .sidebar-menu-item:nth-child(2) { animation-delay: 0.1s; }
+  .sidebar-menu-item:nth-child(3) { animation-delay: 0.15s; }
+  .sidebar-menu-item:nth-child(4) { animation-delay: 0.2s; }
+  .sidebar-menu-item:nth-child(5) { animation-delay: 0.25s; }
+  .sidebar-menu-item:nth-child(6) { animation-delay: 0.3s; }
+  .sidebar-menu-item:nth-child(7) { animation-delay: 0.35s; }
+  .sidebar-menu-item:nth-child(8) { animation-delay: 0.4s; }
+  .sidebar-menu-item:nth-child(9) { animation-delay: 0.45s; }
+
+  .sidebar-group-label {
+    animation: fadeIn 0.4s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .sidebar-active-indicator {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
+    background: linear-gradient(to bottom, rgba(59, 130, 246, 0.8), rgba(96, 165, 250, 0.8));
+    border-radius: 0 4px 4px 0;
+    animation: activeIndicator 0.5s ease-out;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  }
+
+  .sidebar-menu-button-wrapper {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .sidebar-menu-button-wrapper:hover {
+    transform: translateX(4px);
+  }
+
+  .sidebar-menu-button-wrapper:hover svg {
+    animation: iconPulse 0.6s ease-in-out;
+  }
+
+  .sidebar-menu-button-active {
+    position: relative;
+    animation: glow 6s ease-in-out infinite;
+  }
+
+  .sidebar-menu-button-active::before {
+    content: '';
+    position: absolute;
+    left: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
+    background: linear-gradient(to bottom, rgba(59, 130, 246, 0.8), rgba(96, 165, 250, 0.8));
+    border-radius: 0 4px 4px 0;
+    animation: activeIndicator 0.5s ease-out;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    z-index: 10;
+  }
 }
 
 @layer base {
@@ -228,7 +357,7 @@
   /* サイドバーのスクロールバーカスタマイズ */
   [data-sidebar="content"] {
     scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+    scrollbar-color: rgba(255, 255, 255, 0.08) transparent;
   }
 
   [data-sidebar="content"]::-webkit-scrollbar {
@@ -240,12 +369,19 @@
   }
 
   [data-sidebar="content"]::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 3px;
     transition: background 0.2s ease;
   }
 
   [data-sidebar="content"]::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  /* 上下の矢印を非表示 */
+  [data-sidebar="content"]::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
   }
 }
