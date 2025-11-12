@@ -4,6 +4,7 @@ import Header from './Header'
 import Footer from './Footer'
 import AppSidebar from './Sidebar'
 import AuroraBackground from './AuroraBackground'
+import { Toaster } from '@/Components/ui/toaster'
 
 type Props = {
   title?: string
@@ -30,6 +31,8 @@ export default function Layout({ title = 'aurrawork', children }: Props) {
         {/* ===== フッター（任意） ===== */}
         <Footer />
       </SidebarInset>
+      {/* ===== トースト ===== */}
+      <Toaster />
     </SidebarProvider>
   )
 }

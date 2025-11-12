@@ -3,8 +3,10 @@ import { useForm, router } from '@inertiajs/react'
 import { Button } from '@/Components/ui/button'
 import { Input } from '@/Components/ui/input'
 import { Label } from '@/Components/ui/label'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/Components/ui/card'
 import AuroraBackground from '@/Components/layout/AuroraBackground'
+import { toast } from '@/hooks/use-toast'
+import { Toaster } from '@/Components/ui/toaster'
 
 export default function Login() {
   const { data, setData, post, processing, errors } = useForm({
@@ -14,6 +16,10 @@ export default function Login() {
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault()
+    toast({
+      title: 'ログインしました',
+      description: '正常にログインしました。',
+    })
     router.get('/')
   }
 
@@ -69,6 +75,8 @@ export default function Login() {
           </form>
         </CardContent>
       </Card>
+      {/* ===== トースト ===== */}
+      <Toaster />
     </div>
   )
 }

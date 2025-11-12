@@ -20,5 +20,5 @@
       "@/*": ["resources/js/*"]
     }
   },
-  "include": ["resources/js"]
+  "include": ["resources/js/**/*"]
 }
