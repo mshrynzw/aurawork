@@ -33,10 +33,10 @@ export default function Header({ title = 'aurawork' }: HeaderProps) {
       const minutes = date.getMinutes().toString().padStart(2, '0')
       const seconds = date.getSeconds().toString().padStart(2, '0')
 
-      const weekdays = ['日', '月', '火', '水', '木', '金', '土']
+      const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
       const weekday = weekdays[date.getDay()]
 
-      return `${year}年${month}月${day}日（${weekday}）${hours}:${minutes}:${seconds}`
+      return `${weekday} ${year}/${month}/${day} ${hours}:${minutes}:${seconds}`
     }
   }
 
@@ -48,7 +48,7 @@ export default function Header({ title = 'aurawork' }: HeaderProps) {
           <h1 className="text-sm font-semibold tracking-wide text-white/90">{title}</h1>
         </div>
         <div className="flex items-center">
-          <span className="text-sm font-mono text-white/90">
+          <span className="text-2xl font-mono text-white/90 datetime-display">
             <span className="hidden md:inline">{formatDateTime(currentTime, false)}</span>
             <span className="md:hidden">{formatDateTime(currentTime, true)}</span>
           </span>
