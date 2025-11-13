@@ -4,13 +4,21 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, SoftDeletes;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'm_users';
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +26,18 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'company_id',
+        'department_id',
         'email',
         'password',
+        'code',
+        'name_last',
+        'name_first',
+        'name_last_kana',
+        'name_first_kana',
+        'joined_on',
+        'retired_on',
+        'status',
     ];
 
     /**
@@ -41,8 +58,81 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'joined_on' => 'date',
+            'retired_on' => 'date',
+            'status' => 'string',
         ];
+    }
+
+    /**
+     * Get the user's full name.
+     *
+     * @return string
+     */
+    public function getNameAttribute(): string
+    {
+        return "{$this->name_last} {$this->name_first}";
+    }
+
+    // リレーション
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    public function employments()
+    {
+        return $this->hasMany(Employment::class, 'user_id');
+    }
+
+    public function userRoles()
+    {
+        return $this->hasMany(UserRole::class, 'user_id');
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'r_user_roles', 'user_id', 'role_id');
+    }
+
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class, 'user_id');
+    }
+
+    public function timeEntries()
+    {
+        return $this->hasMany(TimeEntry::class, 'user_id');
+    }
+
+    public function leaveRequests()
+    {
+        return $this->hasMany(LeaveRequest::class, 'user_id');
+    }
+
+    public function leaveBalances()
+    {
+        return $this->hasMany(LeaveBalance::class, 'user_id');
+    }
+
+    public function paySlips()
+    {
+        return $this->hasMany(PaySlip::class, 'user_id');
+    }
+
+    public function approvalSteps()
+    {
+        return $this->hasMany(ApprovalStep::class, 'approver_user_id');
+    }
+
+    public function approvals()
+    {
+        return $this->hasMany(Approval::class, 'approver_user_id');
     }
 }
