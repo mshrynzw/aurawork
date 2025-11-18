@@ -12,15 +12,9 @@ import {
 } from '@/Components/ui/table'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/ui/card'
 import { Plus, Shield } from 'lucide-react'
+import type { Role } from '@/schemas'
 
 //TODO: 値は仮のまま
-type Role = {
-  id: number
-  company_id: number
-  slug: string
-  name: string
-  description: string | null
-}
 
 //TODO: 値は仮のまま
 const roles: Role[] = [
@@ -98,6 +92,8 @@ export default function RolesIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-;(RolesIndex as any).layout = (page: React.ReactNode) => (
-  <Layout title="ロールマスタ">{page}</Layout>
-)
+;(
+  RolesIndex as React.ComponentType<Record<string, never>> & {
+    layout?: (page: React.ReactNode) => React.ReactNode
+  }
+).layout = (page: React.ReactNode) => <Layout title="ロールマスタ">{page}</Layout>

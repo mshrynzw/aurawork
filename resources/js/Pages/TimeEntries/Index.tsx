@@ -13,19 +13,9 @@ import {
 import { Badge } from '@/Components/ui/badge'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/ui/card'
 import { Calendar, Clock } from 'lucide-react'
+import type { TimeEntry } from '@/schemas'
 
 //TODO: 値は仮のまま
-type TimeEntry = {
-  id: number
-  work_date: string
-  clock_in: string | null
-  clock_out: string | null
-  break_minutes: number
-  status: 'draft' | 'submitted' | 'approved' | 'rejected'
-  late_minutes: number
-  early_leave_minutes: number
-  overtime_minutes: number
-}
 
 //TODO: 値は仮のまま
 const timeEntries: TimeEntry[] = [
@@ -217,6 +207,8 @@ export default function TimeEntriesIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-;(TimeEntriesIndex as any).layout = (page: React.ReactNode) => (
-  <Layout title="勤怠一覧">{page}</Layout>
-)
+;(
+  TimeEntriesIndex as React.ComponentType<Record<string, never>> & {
+    layout?: (page: React.ReactNode) => React.ReactNode
+  }
+).layout = (page: React.ReactNode) => <Layout title="勤怠一覧">{page}</Layout>

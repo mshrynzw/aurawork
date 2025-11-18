@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, router, useForm, usePage } from '@inertiajs/react'
+import { Link, useForm } from '@inertiajs/react'
 import Layout from '@/Components/layout/Layout'
 import { Button } from '@/Components/ui/button'
 import { Input } from '@/Components/ui/input'
@@ -11,20 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/Components/ui/table'
-
-type User = {
-  id: number
-  name: string
-  email: string
-  created_at: string
-}
-
-type UsersPageProps = {
-  users: {
-    data: User[]
-    links: { url: string | null; label: string; active: boolean }[]
-  }
-}
+import type { UsersPageProps } from '@/schemas'
 
 export default function Index({ users }: UsersPageProps) {
   const { data, setData, post, reset, processing, errors } = useForm({
@@ -104,4 +91,8 @@ export default function Index({ users }: UsersPageProps) {
 }
 
 // Inertiaの"per-page layout"パターン
-;(Index as any).layout = (page: React.ReactNode) => <Layout>{page}</Layout>
+;(
+  Index as React.ComponentType<UsersPageProps> & {
+    layout?: (page: React.ReactNode) => React.ReactNode
+  }
+).layout = (page: React.ReactNode) => <Layout>{page}</Layout>

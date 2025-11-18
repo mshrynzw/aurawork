@@ -167,6 +167,8 @@ export default function LeaveRequestCreate() {
 }
 
 // Inertiaの"per-page layout"パターン
-;(LeaveRequestCreate as any).layout = (page: React.ReactNode) => (
-  <Layout title="休暇申請">{page}</Layout>
-)
+;(
+  LeaveRequestCreate as React.ComponentType<Record<string, never>> & {
+    layout?: (page: React.ReactNode) => React.ReactNode
+  }
+).layout = (page: React.ReactNode) => <Layout title="休暇申請">{page}</Layout>

@@ -247,6 +247,14 @@ pnpm install
 - TypeScriptの構文エラーの可能性
 - `tsconfig.json`の設定を確認
 
+**その他のESLintエラー**
+- `'React' is not defined` → Reactのインポートを追加
+- `'window' is not defined` → `/* eslint-env browser */`を追加
+- `Unexpected any` → 適切な型定義を使用
+- `Cannot call impure function during render` → `useState`の初期化関数内で使用
+
+詳細は [ESLintエラー防止ガイド](../44-コーディングについて/ESLintエラー防止ガイド.md) を参照してください。
+
 ### Prettierのエラー
 
 **エラー: `No parser could be inferred`**
@@ -260,6 +268,7 @@ pnpm install
 - [Prettier公式ドキュメント](https://prettier.io/docs/en/)
 - [TypeScript ESLint](https://typescript-eslint.io/)
 - [React ESLint Plugin](https://github.com/jsx-eslint/eslint-plugin-react)
+- [ESLintエラー防止ガイド](../44-コーディングについて/ESLintエラー防止ガイド.md) - よくあるESLintエラーと解決方法
 
 ---
 

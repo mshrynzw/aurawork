@@ -14,16 +14,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Com
 import { Badge } from '@/Components/ui/badge'
 import { ArrowLeft, Download } from 'lucide-react'
 
+import type { PayLine } from '@/schemas'
+
 //TODO: 値は仮のまま
-type PayLine = {
-  id: number
-  pay_item_name: string
-  pay_item_kind: 'earning' | 'deduction'
-  quantity: number | null
-  rate: number | null
-  amount: number
-  memo: string | null
-}
 
 //TODO: 値は仮のまま
 const paySlip = {
@@ -114,7 +107,7 @@ const formatCurrency = (amount: number) => {
   }).format(amount)
 }
 
-const kindLabel = (kind: PayLine['pay_item_kind']) => {
+const _kindLabel = (kind: PayLine['pay_item_kind']) => {
   return kind === 'earning' ? '支給' : '控除'
 }
 
@@ -237,4 +230,8 @@ export default function PaySlipShow() {
 }
 
 // Inertiaの"per-page layout"パターン
-;(PaySlipShow as any).layout = (page: React.ReactNode) => <Layout title="給与明細">{page}</Layout>
+;(
+  PaySlipShow as React.ComponentType<Record<string, never>> & {
+    layout?: (page: React.ReactNode) => React.ReactNode
+  }
+).layout = (page: React.ReactNode) => <Layout title="給与明細">{page}</Layout>

@@ -12,15 +12,9 @@ import {
 } from '@/Components/ui/table'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/ui/card'
 import { Plus, Building2 } from 'lucide-react'
+import type { Company } from '@/schemas'
 
 //TODO: 値は仮のまま
-type Company = {
-  id: number
-  name: string
-  code: string
-  timezone: string
-  start_of_week: number
-}
 
 //TODO: 値は仮のまま
 const companies: Company[] = [
@@ -98,6 +92,8 @@ export default function CompaniesIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-;(CompaniesIndex as any).layout = (page: React.ReactNode) => (
-  <Layout title="会社マスタ">{page}</Layout>
-)
+;(
+  CompaniesIndex as React.ComponentType<Record<string, never>> & {
+    layout?: (page: React.ReactNode) => React.ReactNode
+  }
+).layout = (page: React.ReactNode) => <Layout title="会社マスタ">{page}</Layout>

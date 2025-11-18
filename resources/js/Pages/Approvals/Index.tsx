@@ -23,20 +23,10 @@ import {
 } from '@/Components/ui/dialog'
 import { Textarea } from '@/Components/ui/textarea'
 import { Label } from '@/Components/ui/label'
-import { CheckCircle, XCircle, MessageSquare } from 'lucide-react'
+import { CheckCircle, XCircle } from 'lucide-react'
+import type { Approval } from '@/schemas'
 
 //TODO: 値は仮のまま
-type Approval = {
-  id: number
-  target_type: 'time_entry' | 'leave_request' | 'generic'
-  target_id: number
-  applicant_name: string
-  target_date: string
-  current_step: number
-  total_steps: number
-  status: 'draft' | 'in_review' | 'approved' | 'rejected'
-  description: string
-}
 
 //TODO: 値は仮のまま
 const approvals: Approval[] = [
@@ -213,6 +203,8 @@ export default function ApprovalsIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-;(ApprovalsIndex as any).layout = (page: React.ReactNode) => (
-  <Layout title="承認一覧">{page}</Layout>
-)
+;(
+  ApprovalsIndex as React.ComponentType<Record<string, never>> & {
+    layout?: (page: React.ReactNode) => React.ReactNode
+  }
+).layout = (page: React.ReactNode) => <Layout title="承認一覧">{page}</Layout>

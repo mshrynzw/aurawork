@@ -13,15 +13,9 @@ import {
 import { Badge } from '@/Components/ui/badge'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/ui/card'
 import { Plus, Calendar } from 'lucide-react'
+import type { Holiday } from '@/schemas'
 
 //TODO: 値は仮のまま
-type Holiday = {
-  id: number
-  company_id: number
-  date: string
-  name: string
-  is_national: boolean
-}
 
 //TODO: 値は仮のまま
 const holidays: Holiday[] = [
@@ -110,6 +104,8 @@ export default function HolidaysIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-;(HolidaysIndex as any).layout = (page: React.ReactNode) => (
-  <Layout title="休日マスタ">{page}</Layout>
-)
+;(
+  HolidaysIndex as React.ComponentType<Record<string, never>> & {
+    layout?: (page: React.ReactNode) => React.ReactNode
+  }
+).layout = (page: React.ReactNode) => <Layout title="休日マスタ">{page}</Layout>

@@ -233,6 +233,8 @@ export default function Dashboard() {
 }
 
 // Inertiaの"per-page layout"パターン
-;(Dashboard as any).layout = (page: React.ReactNode) => (
-  <Layout title="ダッシュボード">{page}</Layout>
-)
+;(
+  Dashboard as React.ComponentType<Record<string, never>> & {
+    layout?: (page: React.ReactNode) => React.ReactNode
+  }
+).layout = (page: React.ReactNode) => <Layout title="ダッシュボード">{page}</Layout>

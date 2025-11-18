@@ -13,18 +13,9 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/ui/card'
 import { Badge } from '@/Components/ui/badge'
 import { Plus, Briefcase } from 'lucide-react'
+import type { Employment } from '@/schemas'
 
 //TODO: 値は仮のまま
-type Employment = {
-  id: number
-  user_name: string
-  employment_type: 'fulltime' | 'contract' | 'parttime' | 'intern'
-  base_hourly_rate: number | null
-  base_monthly_salary: number | null
-  work_hours_per_week: number
-  effective_from: string
-  effective_to: string | null
-}
 
 //TODO: 値は仮のまま
 const employments: Employment[] = [
@@ -134,6 +125,8 @@ export default function EmploymentsIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-;(EmploymentsIndex as any).layout = (page: React.ReactNode) => (
-  <Layout title="雇用情報マスタ">{page}</Layout>
-)
+;(
+  EmploymentsIndex as React.ComponentType<Record<string, never>> & {
+    layout?: (page: React.ReactNode) => React.ReactNode
+  }
+).layout = (page: React.ReactNode) => <Layout title="雇用情報マスタ">{page}</Layout>

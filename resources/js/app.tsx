@@ -7,11 +7,15 @@ import { createInertiaApp } from '@inertiajs/react'
 // Type-safe Page resolver
 createInertiaApp({
   resolve: name => {
-    // Use any to avoid TypeScript error on import.meta.glob
-    const pages: Record<string, { default: React.ComponentType<any> }> = (import.meta as any).glob(
-      './Pages/**/*.tsx',
-      { eager: true }
-    )
+    // Use unknown to avoid TypeScript error on import.meta.glob
+    const pages: Record<string, { default: React.ComponentType<unknown> }> = (
+      import.meta as {
+        glob: (
+          pattern: string,
+          options: { eager: boolean }
+        ) => Record<string, { default: React.ComponentType<unknown> }>
+      }
+    ).glob('./Pages/**/*.tsx', { eager: true })
     const page = pages[`./Pages/${name}.tsx`]
     return page ? page.default : undefined
   },

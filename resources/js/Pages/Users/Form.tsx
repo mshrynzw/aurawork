@@ -1,6 +1,13 @@
 import React from 'react'
+import type { UserFormProps } from '@/schemas'
 
-export default function Form({ data, setData, processing, onSubmit, submitLabel = 'Save' }) {
+export default function Form({
+  data,
+  setData,
+  processing,
+  onSubmit,
+  submitLabel = 'Save',
+}: UserFormProps) {
   return (
     <form onSubmit={onSubmit} className="grid gap-4 max-w-lg">
       <input

@@ -1,10 +1,16 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import { Link, useForm, usePage } from '@inertiajs/react'
 import Layout from '@/Components/layout/Layout'
 import Form from './Form'
+import type { User } from '@/schemas'
 
-export default function Edit({ user }) {
-  const { props } = usePage()
+interface Props {
+  user: User
+}
+
+export default function Edit({ user }: Props) {
+  const { props } = usePage<{ flash?: { success?: string } }>()
   const flash = props.flash || {}
 
   const { data, setData, put, processing, errors } = useForm({
@@ -50,4 +56,6 @@ export default function Edit({ user }) {
 }
 
 // Inertiaの"per-page layout"パターン
-;(Edit as any).layout = (page: React.ReactNode) => <Layout title="Edit User">{page}</Layout>
+;(
+  Edit as React.ComponentType<Props> & { layout?: (page: React.ReactNode) => React.ReactNode }
+).layout = (page: React.ReactNode) => <Layout title="Edit User">{page}</Layout>

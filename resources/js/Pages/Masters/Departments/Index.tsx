@@ -12,16 +12,9 @@ import {
 } from '@/Components/ui/table'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/ui/card'
 import { Plus, FolderTree } from 'lucide-react'
+import type { Department } from '@/schemas'
 
 //TODO: 値は仮のまま
-type Department = {
-  id: number
-  company_id: number
-  name: string
-  code: string
-  parent_id: number | null
-  parent_name: string | null
-}
 
 //TODO: 値は仮のまま
 const departments: Department[] = [
@@ -102,6 +95,8 @@ export default function DepartmentsIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-;(DepartmentsIndex as any).layout = (page: React.ReactNode) => (
-  <Layout title="部門マスタ">{page}</Layout>
-)
+;(
+  DepartmentsIndex as React.ComponentType<Record<string, never>> & {
+    layout?: (page: React.ReactNode) => React.ReactNode
+  }
+).layout = (page: React.ReactNode) => <Layout title="部門マスタ">{page}</Layout>

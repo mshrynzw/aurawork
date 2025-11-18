@@ -9,7 +9,7 @@ import { toast } from '@/hooks/use-toast'
 import { Toaster } from '@/Components/ui/toaster'
 
 export default function Login() {
-  const { data, setData, post, processing, errors } = useForm({
+  const { data, setData, processing, errors } = useForm({
     email: '',
     password: '',
   })

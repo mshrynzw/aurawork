@@ -3,7 +3,6 @@ import { Link, usePage, router } from '@inertiajs/react'
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,

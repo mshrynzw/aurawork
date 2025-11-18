@@ -13,17 +13,9 @@ import {
 import { Badge } from '@/Components/ui/badge'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/ui/card'
 import { Calendar, Plus } from 'lucide-react'
+import type { LeaveRequest } from '@/schemas'
 
 //TODO: 値は仮のまま
-type LeaveRequest = {
-  id: number
-  type: 'annual' | 'sick' | 'special' | 'unpaid'
-  start_date: string
-  end_date: string
-  days: number
-  reason: string | null
-  status: 'draft' | 'submitted' | 'approved' | 'rejected'
-}
 
 //TODO: 値は仮のまま
 const leaveRequests: LeaveRequest[] = [
@@ -160,6 +152,8 @@ export default function LeaveRequestsIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-;(LeaveRequestsIndex as any).layout = (page: React.ReactNode) => (
-  <Layout title="休暇申請一覧">{page}</Layout>
-)
+;(
+  LeaveRequestsIndex as React.ComponentType<Record<string, never>> & {
+    layout?: (page: React.ReactNode) => React.ReactNode
+  }
+).layout = (page: React.ReactNode) => <Layout title="休暇申請一覧">{page}</Layout>

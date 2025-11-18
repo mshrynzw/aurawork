@@ -12,13 +12,9 @@ import {
 } from '@/Components/ui/table'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/ui/card'
 import { Plus, Key } from 'lucide-react'
+import type { Permission } from '@/schemas'
 
 //TODO: 値は仮のまま
-type Permission = {
-  id: number
-  key: string
-  description: string | null
-}
 
 //TODO: 値は仮のまま
 const permissions: Permission[] = [
@@ -83,6 +79,8 @@ export default function PermissionsIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-;(PermissionsIndex as any).layout = (page: React.ReactNode) => (
-  <Layout title="権限マスタ">{page}</Layout>
-)
+;(
+  PermissionsIndex as React.ComponentType<Record<string, never>> & {
+    layout?: (page: React.ReactNode) => React.ReactNode
+  }
+).layout = (page: React.ReactNode) => <Layout title="権限マスタ">{page}</Layout>

@@ -13,16 +13,9 @@ import {
 import { Badge } from '@/Components/ui/badge'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/ui/card'
 import { Plus, Workflow } from 'lucide-react'
+import type { ApprovalFlow } from '@/schemas'
 
 //TODO: 値は仮のまま
-type ApprovalFlow = {
-  id: number
-  company_id: number
-  name: string
-  target: 'time_entry' | 'leave_request' | 'generic'
-  is_active: boolean
-  step_count: number
-}
 
 //TODO: 値は仮のまま
 const approvalFlows: ApprovalFlow[] = [
@@ -120,6 +113,8 @@ export default function ApprovalFlowsIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-;(ApprovalFlowsIndex as any).layout = (page: React.ReactNode) => (
-  <Layout title="承認フローマスタ">{page}</Layout>
-)
+;(
+  ApprovalFlowsIndex as React.ComponentType<Record<string, never>> & {
+    layout?: (page: React.ReactNode) => React.ReactNode
+  }
+).layout = (page: React.ReactNode) => <Layout title="承認フローマスタ">{page}</Layout>

@@ -3,16 +3,9 @@ import Layout from '@/Components/layout/Layout'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/ui/card'
 import { Badge } from '@/Components/ui/badge'
 import { Progress } from '@/Components/ui/progress'
+import type { LeaveBalance } from '@/schemas'
 
 //TODO: 値は仮のまま
-type LeaveBalance = {
-  type: 'annual' | 'sick' | 'special'
-  period_start: string
-  period_end: string
-  granted: number
-  taken: number
-  carryover: number
-}
 
 //TODO: 値は仮のまま
 const leaveBalances: LeaveBalance[] = [
@@ -117,6 +110,8 @@ export default function LeaveBalancesIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-;(LeaveBalancesIndex as any).layout = (page: React.ReactNode) => (
-  <Layout title="休暇残高">{page}</Layout>
-)
+;(
+  LeaveBalancesIndex as React.ComponentType<Record<string, never>> & {
+    layout?: (page: React.ReactNode) => React.ReactNode
+  }
+).layout = (page: React.ReactNode) => <Layout title="休暇残高">{page}</Layout>

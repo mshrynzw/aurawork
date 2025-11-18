@@ -13,19 +13,9 @@ import {
 import { Badge } from '@/Components/ui/badge'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/ui/card'
 import { Plus, Coins } from 'lucide-react'
+import type { PayItem } from '@/schemas'
 
 //TODO: 値は仮のまま
-type PayItem = {
-  id: number
-  company_id: number
-  code: string
-  name: string
-  kind: 'earning' | 'deduction'
-  calc_base: 'hour' | 'day' | 'month' | 'fixed' | 'overtime' | 'night' | 'transport'
-  taxable: boolean
-  social_insurance: boolean
-  order_no: number
-}
 
 //TODO: 値は仮のまま
 const payItems: PayItem[] = [
@@ -150,6 +140,8 @@ export default function PayItemsIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-;(PayItemsIndex as any).layout = (page: React.ReactNode) => (
-  <Layout title="賃金項目マスタ">{page}</Layout>
-)
+;(
+  PayItemsIndex as React.ComponentType<Record<string, never>> & {
+    layout?: (page: React.ReactNode) => React.ReactNode
+  }
+).layout = (page: React.ReactNode) => <Layout title="賃金項目マスタ">{page}</Layout>

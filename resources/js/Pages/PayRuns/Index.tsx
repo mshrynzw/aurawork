@@ -13,17 +13,9 @@ import {
 import { Badge } from '@/Components/ui/badge'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/ui/card'
 import { Calendar, DollarSign } from 'lucide-react'
+import type { PayRun } from '@/schemas'
 
 //TODO: 値は仮のまま
-type PayRun = {
-  id: number
-  period_start: string
-  period_end: string
-  pay_date: string
-  status: 'draft' | 'calculating' | 'finalized' | 'paid'
-  employee_count: number
-  total_amount: number
-}
 
 //TODO: 値は仮のまま
 const payRuns: PayRun[] = [
@@ -153,6 +145,8 @@ export default function PayRunsIndex() {
 }
 
 // Inertiaの"per-page layout"パターン
-;(PayRunsIndex as any).layout = (page: React.ReactNode) => (
-  <Layout title="給与締め一覧">{page}</Layout>
-)
+;(
+  PayRunsIndex as React.ComponentType<Record<string, never>> & {
+    layout?: (page: React.ReactNode) => React.ReactNode
+  }
+).layout = (page: React.ReactNode) => <Layout title="給与締め一覧">{page}</Layout>
